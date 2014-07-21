@@ -20,7 +20,7 @@ $against = $return === 0
 exec( "git diff-index --cached --full-index {$against}", $files );
 
 
-echo "----------------------\n";
+echo "\n----------------------\n";
 echo " Running PHP Lint\n";
 echo "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n";
 
@@ -82,7 +82,7 @@ else
 	echo "----------------------\n";
 	echo " † Please fix all errors before commiting.\n";
 }
-echo "----------------------\n";
+echo "----------------------\n\n";
 
 # End and (in case) abort
 exit( $exit_status );
