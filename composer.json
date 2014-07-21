@@ -16,7 +16,8 @@
 	},
 	"minimum-stability" : "dev",
 	"require"     : {
-		"php" : ">=5.3"
+		"php"         : ">=5.3",
+		"phpmd/phpmd" : "dev-master"
 	},
 	"autoload"    : {
 		"classmap" : [ "" ]
