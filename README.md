@@ -6,6 +6,14 @@ with [GitPHPHooks](https://github.com/wecodemore/GitPHPHooks).
 The Hooks are available in the [`src` directory](https://github.com/wecodemore/GitPHPHooksLibrary/tree/master/src)
 of this repo. You can read more about the naming convention [here](https://github.com/wecodemore/GitPHPHooks#naming-convention).
 
+## Install
+
+This repo is registered to Packagist. You can include it by adding
+
+    "wcm/git-php-hooks-library": "dev-master"
+
+to your projects `composer.json` file.
+
 ## Examples included
 
  * PHP Lint as `pre-commit` task, priority: 10
