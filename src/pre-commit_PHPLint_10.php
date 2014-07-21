@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 
 /**
@@ -81,8 +80,7 @@ else
 {
 	echo "----------------------\n";
 	echo " † Please fix all errors before commiting.\n";
+	# End and abort
+	exit( $exit_status );
 }
 echo "----------------------\n\n";
-
-# End and (in case) abort
-exit( $exit_status );
