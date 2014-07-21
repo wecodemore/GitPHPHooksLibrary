@@ -17,6 +17,7 @@ to your projects `composer.json` file.
 ## Examples included
 
  * PHP Lint as `pre-commit` task, priority: 10
+ * PHP Mess Detector as `pre-push` task, priority: 10
 
 ## Pull Requests
 
