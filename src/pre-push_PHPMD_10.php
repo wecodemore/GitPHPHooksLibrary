@@ -54,6 +54,10 @@ foreach ( $files as $file )
 		echo " └─ {$error[1]}\n";
 		$exit_status = 1;
 	}
+	else
+	{
+		echo " ├─ ✔ {$file}\n";
+	}
 }
 
 if ( 0 === $exit_status )
