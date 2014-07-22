@@ -14,9 +14,9 @@ $against = $return === 0
 exec( "git diff-index --cached --full-index {$against}", $files );
 
 
-echo "\n----------------------\n";
+echo "\n-------------------------\n";
 echo " Running PHP Mess Detector\n";
-echo "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n";
+echo "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n";
 
 $pattern = '/\.ph(tml|p)$/';
 $exit_status = 0;
@@ -59,13 +59,13 @@ foreach ( $files as $file )
 if ( 0 === $exit_status )
 {
 	echo " ♥ All files mess free.\n";
-	echo "----------------------\n\n";
+	echo "--------------------------\n\n";
 }
 else
 {
-	echo "----------------------\n";
+	echo "--------------------------\n";
 	echo " † Please fix the mess before commiting.\n";
-	echo "----------------------\n\n";
+	echo "--------------------------\n\n";
 	# End and abort
 	exit( $exit_status );
 }
