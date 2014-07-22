@@ -45,6 +45,8 @@ foreach ( $files as $file )
 	if ( "D" === $status )
 		continue;
 
+	$output = array();
+	$result = '';
 	// Grab the file from the list of files in the commit
 	$cmd = sprintf(
 		"git cat-file -p %s | php -l -ddisplay_errors\=1 -derror_reporting\=E_ALL -dlog_errrors\=0",

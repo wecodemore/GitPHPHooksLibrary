@@ -41,7 +41,8 @@ foreach ( $files as $file )
 		continue;
 
 	$dir = getcwd();
-	$output = $result = '';
+	$output = array();
+	$result = '';
 	$cmd = sprintf(
 		"{$dir}/vendor/bin/phpmd %s text {$dir}/config/.phpmd.xml",
 		escapeshellarg( $name )
