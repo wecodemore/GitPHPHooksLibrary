@@ -21,7 +21,7 @@ exec( "git diff-index --cached --full-index {$against}", $files );
 
 echo "\n--------------------------\n";
 echo " Running PHP Lint\n";
-echo "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n";
+echo "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n";
 
 $pattern = '/\.ph(tml|p)$/';
 $exit_status = 0;
