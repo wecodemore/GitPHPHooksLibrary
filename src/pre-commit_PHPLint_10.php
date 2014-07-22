@@ -74,7 +74,7 @@ foreach ( $files as $file )
 	}
 	else
 	{
-		echo " ├─ ✔ {$name}\n";
+		echo " ├─ √ {$name}\n";
 	}
 }
 
