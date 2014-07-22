@@ -74,12 +74,13 @@ foreach ( $files as $file )
 	}
 	else
 	{
-		echo " ├─ ✔ {$file}\n";
+		echo " ├─ ✔ {$name}\n";
 	}
 }
 
 if ( 0 === $exit_status )
 {
+	echo "--------------------------\n";
 	echo " ♥ All files lint free.\n";
 	echo "--------------------------\n\n";
 }
