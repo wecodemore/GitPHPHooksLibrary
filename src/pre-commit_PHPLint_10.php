@@ -70,6 +70,10 @@ foreach ( $files as $file )
 
 		$exit_status = 1;
 	}
+	else
+	{
+		echo " ├─ ✔ {$file}\n";
+	}
 }
 
 if ( 0 === $exit_status )
