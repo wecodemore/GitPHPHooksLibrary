@@ -16,7 +16,7 @@ exec( "git diff-index --cached --full-index {$against}", $files );
 
 echo "\n-------------------------\n";
 echo " Running PHP Mess Detector\n";
-echo "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n";
+echo "-------------------------\n";
 
 $pattern = '/\.ph(tml|p)$/';
 $exit_status = 0;
@@ -51,27 +51,27 @@ foreach ( $files as $file )
 	if ( $result > 0 )
 	{
 		$error = explode( "\t", $output[1] );
-		echo " ├─ {$error[0]}\n";
-		echo " └─ {$error[1]}\n";
+		echo " |- {$error[0]}\n";
+		echo " `- {$error[1]}\n";
 		$exit_status = 1;
 	}
 	else
 	{
-		echo " ├─ √ {$name}\n";
+		echo " |- {$name}\n";
 	}
 }
 
 if ( 0 === $exit_status )
 {
-	echo "--------------------------\n";
-	echo " ♥ All files mess free.\n";
-	echo "--------------------------\n\n";
+	echo "-------------------------\n";
+	echo " <3 All files mess free.\n";
+	echo "-------------------------\n\n";
 }
 else
 {
-	echo "--------------------------\n";
-	echo " † Please fix the mess before commiting.\n";
-	echo "--------------------------\n\n";
+	echo "---------------------------------------\n";
+	echo " Please fix the mess before commiting.\n";
+	echo "---------------------------------------\n\n";
 	# End and abort
 	exit( $exit_status );
 }
