@@ -21,7 +21,7 @@ exec( "git diff-index --cached --full-index {$against}", $files );
 
 echo "\n--------------------------\n";
 echo " Running PHP Lint\n";
-echo "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n";
+echo "--------------------------\n";
 
 $pattern = '/\.ph(tml|p)$/';
 $exit_status = 0;
@@ -66,7 +66,7 @@ foreach ( $files as $file )
 			echo preg_replace(
 				'/\s(in)\s/i',
 				" in {$name} ",
-				" ├─ {$line}\n"
+				" |- {$line}\n"
 			);
 		}
 
@@ -74,21 +74,21 @@ foreach ( $files as $file )
 	}
 	else
 	{
-		echo " ├─ √ {$name}\n";
+		echo " |- {$name}\n";
 	}
 }
 
 if ( 0 === $exit_status )
 {
 	echo "--------------------------\n";
-	echo " ♥ All files lint free.\n";
+	echo " <3 All files lint free.\n";
 	echo "--------------------------\n\n";
 }
 else
 {
-	echo "--------------------------\n";
-	echo " † Please fix all errors before commiting.\n";
-	echo "--------------------------\n\n";
+	echo "-----------------------------------------\n";
+	echo " Please fix all errors before commiting.\n";
+	echo "-----------------------------------------\n\n";
 	# End and abort
 	exit( $exit_status );
 }
