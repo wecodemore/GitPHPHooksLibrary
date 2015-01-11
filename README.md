@@ -14,6 +14,14 @@ This repo is registered to Packagist. You can include it by adding
 
 to your projects `composer.json` file.
 
+On **Windows** you might want to use the `--prefer-source` flag. It's a
+[_known issue_](https://github.com/composer/composer/issues/604) that Windows will
+use `zip` and instantly extract the `pdepend/pdepend` package and fail else. The _fix_ is:
+
+    composer install --prefer-source
+
+(The same works with `composer update`).
+
 ## Examples included
 
  * PHP Lint as `pre-commit` task, priority: 10

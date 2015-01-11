@@ -1,23 +1,24 @@
 {
     "name"        : "wcm/git-php-hooks-library",
-    "version"     : "0.1.0",
     "description" : "A collection of Git PHP Hooks",
 	"homepage"    : "https://github.com/wecodemore/GitPHPHooksLibrary",
 	"keywords"    : [ "git", "php", "hooks", "git hook" ],
     "license"     : "MIT",
     "authors"     : [
         {
-            "name"  : "Kaiser Franz Josef",
-            "email" : "wecodemore@gmail.com"
+            "name"     : "Kaiser Franz Josef",
+            "homepage" : "http://unserkaiser.com",
+            "email"    : "wecodemore@gmail.com"
         }
     ],
 	"support"     : {
-		"issues" : "https://github.com/wecodemore/GitPHPHooksLibrary/issues"
+		"issues"  : "https://github.com/wecodemore/GitPHPHooksLibrary/issues",
+		"sources" : "https://github.com/wecodemore/GitPHPHooksLibrary/releases"
 	},
 	"minimum-stability" : "dev",
 	"require"     : {
 		"php"         : ">=5.3",
-		"phpmd/phpmd" : "dev-master"
+		"phpmd/phpmd" : "^2.1"
 	},
 	"autoload"    : {
 		"classmap" : [ "" ]
