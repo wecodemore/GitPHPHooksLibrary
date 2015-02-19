@@ -1,6 +1,6 @@
 # Git PHP Hooks - official Library
 
-This is a set of Git PHP Hooks examples, ready to use in conjunction
+This is a set of Git PHP Hooks tasks, ready to use in conjunction
 with [GitPHPHooks](https://github.com/wecodemore/GitPHPHooks).
 
 The Hooks are available in the [`src` directory](https://github.com/wecodemore/GitPHPHooksLibrary/tree/master/src)
@@ -14,7 +14,7 @@ This repo is registered to Packagist. You can include it by adding
 
 to your projects `composer.json` file.
 
-## Examples included
+## Tasks included
 
  * PHP Lint as `pre-commit` task, priority: 10
  * PHP Mess Detector as `pre-push` task, priority: 10
