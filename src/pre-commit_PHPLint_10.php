@@ -64,7 +64,7 @@ foreach ( $files as $file )
 	$result = '';
 	// Grab the file from the list of files in the commit
 	$cmd = sprintf(
-		"git cat-file -p %s | php -l -ddisplay_errors\=1 -derror_reporting\=E_ALL -dlog_errrors\=0",
+		"git cat-file -p %s | php -l -ddisplay_errors\=1 -derror_reporting\=E_ALL -dlog_errors\=0",
 		escapeshellarg( $sha )
 	);
 	exec( $cmd, $output, $result );
