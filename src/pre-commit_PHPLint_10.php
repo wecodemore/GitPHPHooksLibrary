@@ -31,6 +31,7 @@ foreach ( $files as $file )
 	$sha    = $parts[3];
 	$name   = substr( $parts[4], 2 );
 	$status = substr( $parts[4], 0, 1 );
+	$path   = str_replace( "{$status}\t", "", $parts[4] );
 
 	// don't check files that aren't PHP
 	if ( ! preg_match( $pattern, $name ) )
@@ -41,8 +42,22 @@ foreach ( $files as $file )
 	if ( ! file_exists( $name ) )
 		continue;
 
+	// Unmerged
+	if ( 'U' === $status )
+	{
+		echo " |- {$name} is unmerged. You must complete the merge before it can be committed.\n";
+		continue;
+	}
+
+	// Internal Git Bug
+	if ( 'X' === $status )
+	{
+		echo " |- {$name}: unknown status. Please file a bug report for git. Really.\n";
+		continue;
+	}
+
 	// If the file was deleted, skip it
-	if ( "D" === $status )
+	if ( 'D' === $status )
 		continue;
 
 	$output = array();
