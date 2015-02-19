@@ -26,6 +26,7 @@ foreach ( $files as $file )
 	$sha    = $parts[3];
 	$name   = substr( $parts[4], 2 );
 	$status = substr( $parts[4], 0, 1 );
+	$path   = str_replace( "{$status}\t", "", $parts[4] );
 
 	// don't check files that aren't PHP
 	if ( ! preg_match( $pattern, $name ) )
@@ -36,23 +37,63 @@ foreach ( $files as $file )
 	if ( ! file_exists( $name ) )
 		continue;
 
+	// Unmerged
+	if ( 'U' === $status )
+	{
+		echo " |- {$name} is unmerged. You must complete the merge before it can be committed.\n";
+		continue;
+	}
+
+	// Internal Git Bug
+	if ( 'X' === $status )
+	{
+		echo " |- {$name}: unknown status. Please file a bug report for git. Really.\n";
+		continue;
+	}
 	// If the file was deleted, skip it
-	if ( "D" === $status )
+	if ( 'D' === $status )
 		continue;
 
-	$dir = getcwd();
+	$cwd = getcwd();
+	$bin = "{$cwd}/vendor/bin/";
+	if ( file_exists( "{$cwd}\\composer.json" ) )
+	{
+		$composer = json_decode( file_get_contents( "{$cwd}\\composer.json" ) );
+		if (
+			property_exists( $composer, 'config' )
+			and isset( $composer->config->{"bin-dir"} )
+		)
+			$bin = str_replace( DIRECTORY_SEPARATOR, "/", "{$cwd}/{$composer->config->{"bin-dir"}}/" );
+	}
 	$output = array();
 	$result = '';
 	$cmd = sprintf(
-		"{$dir}/vendor/bin/phpmd %s text {$dir}/config/.phpmd.xml",
+		"{$bin}/phpmd %s text {$cwd}/config/.phpmd.xml",
 		escapeshellarg( $name )
 	);
 	exec( $cmd, $output, $result );
-	if ( $result > 0 )
+	if (
+		$result > 0
+		and ! empty( $output )
+		)
 	{
 		$error = explode( "\t", $output[1] );
-		echo " |- {$error[0]}\n";
-		echo " `- {$error[1]}\n";
+		if ( count( $error ) >= 2 )
+		{
+			echo " |- {$error[0]}\n";
+			echo " `- {$error[1]}\n";
+		}
+		elseif (
+			count( $error ) === 1
+			and strstr( $error[0], $path )
+			)
+		{
+			echo " |- {$error[0]}\n";
+		}
+		else
+		{
+			echo " |- {$name}\n";
+		}
 		$exit_status = 1;
 	}
 	else
